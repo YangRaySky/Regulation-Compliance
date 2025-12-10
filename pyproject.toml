@@ -70,7 +70,10 @@ select = ["E", "F", "I", "N", "W"]
 [tool.ruff.lint.per-file-ignores]
 # 這些檔案包含長描述字串，允許超過行長度限制
 "src/agents/tool_schemas.py" = ["E501"]
-"src/agents/tools.py" = ["E501"]
+# tools.py: E501(長行), E402(import 位置), N806(函數內常數)
+"src/agents/tools.py" = ["E501", "E402", "N806"]
+# langgraph_team.py 使用大寫變數名作為函數內常數（這是有意的設計）
+"src/agents/langgraph_team.py" = ["N806"]
 
 [tool.mypy]
 python_version = "3.10"

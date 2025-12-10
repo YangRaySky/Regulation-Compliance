@@ -21,7 +21,7 @@ from langgraph.graph import END, StateGraph
 
 from ..database import BaselineManager
 from ..utils.config import load_prompt
-from .tool_executor import execute_tool, execute_tool_call, parse_tool_results
+from .tool_executor import execute_tool_call, parse_tool_results
 from .tool_schemas import get_tool_schemas
 from .tools import fetch_pdf_content, fetch_webpage
 
@@ -800,7 +800,7 @@ class RegulationAgentTeam:
         if not skip_cache:
             cached_result = self.cache.get(cache_key_query, jurisdiction)
             if cached_result:
-                print(f"[Cache] 快取命中，直接返回結果")
+                print("[Cache] 快取命中，直接返回結果")
                 yield ("📦 從快取載入結果...", None)
                 cached_result['from_cache'] = True
                 yield ("🎉 查詢完成（快取）!", cached_result)
@@ -826,13 +826,6 @@ class RegulationAgentTeam:
             # ===== 使用 stream() 取代 invoke() 以獲取即時進度 =====
             final_state = None
             current_node = None
-
-            # Node 狀態對應的顯示訊息
-            node_messages = {
-                "planner": "📋 Planner 正在分析查詢意圖...",
-                "researcher": "🔍 Researcher 正在執行多關鍵字搜尋...",
-                "validator": "✅ Validator 正在驗證並整理結果...",
-            }
 
             # 預先顯示 Planner 進度（因為 stream() 在 node 完成後才返回）
             yield ("📋 Planner 正在分析查詢意圖...", None)
