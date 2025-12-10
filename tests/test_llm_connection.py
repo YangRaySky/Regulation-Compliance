@@ -20,8 +20,9 @@ def test_azure_openai():
     deployment = os.getenv("AZURE_OPENAI_GPT5_DEPLOYMENT", "gpt-5.1")
     api_version = os.getenv("AZURE_OPENAI_API_VERSION", "2024-12-01-preview")
 
-    if not endpoint or not api_key:
-        pytest.skip("Azure OpenAI 未配置")
+    # 跳過 CI 環境或未配置的情況
+    if not endpoint or not api_key or api_key.startswith("test-"):
+        pytest.skip("Azure OpenAI 未配置或為 CI 測試環境")
 
     client = AzureOpenAI(
         api_version=api_version,
@@ -69,6 +70,11 @@ def test_anthropic_foundry():
 
 def test_langgraph_llm():
     """測試 LangGraph LLM 配置"""
+    # 跳過 CI 環境
+    api_key = os.getenv("AZURE_OPENAI_API_KEY")
+    if not api_key or api_key.startswith("test-"):
+        pytest.skip("CI 測試環境，跳過 LLM 連線測試")
+
     from src.agents.langgraph_team import get_llm
 
     llm = get_llm()
