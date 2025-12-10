@@ -9,8 +9,8 @@ LLM 客戶端基底類別
 
 import json
 from abc import ABC, abstractmethod
-from typing import Optional
 from dataclasses import dataclass
+from typing import Optional
 
 
 @dataclass
@@ -96,7 +96,8 @@ class BaseLLMClient(ABC):
             - clarification_questions: 需要釐清的問題列表
             - understood: 已理解的查詢內容
         """
-        system_prompt = """你是一個法規查詢分析專家。分析使用者的查詢，判斷是否足夠清晰。
+        system_prompt = """你是一個法規查詢分析專家。分析使用者的查詢，\
+判斷是否足夠清晰。
 
 你必須以 JSON 格式回應，格式如下：
 ```json
@@ -170,7 +171,8 @@ UI 選擇的地區：{jurisdiction}
             - regulations: 法規列表
             - notes: 補充說明
         """
-        system_prompt = """你是一個資安法規搜尋專家。根據使用者的查詢，提供相關法規資訊。
+        system_prompt = """你是一個資安法規搜尋專家。根據使用者的查詢，\
+提供相關法規資訊。
 
 你必須以 JSON 格式回應，格式如下：
 ```json

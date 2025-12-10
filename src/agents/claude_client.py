@@ -6,8 +6,8 @@ Claude (Anthropic Foundry on Azure) 客戶端
 """
 
 import os
-from typing import Optional
 from dataclasses import dataclass
+from typing import Optional
 
 from anthropic import AnthropicFoundry
 from dotenv import load_dotenv
@@ -53,7 +53,9 @@ class ClaudeClient(BaseLLMClient):
         self.model = model or os.getenv("ANTHROPIC_FOUNDRY_MODEL", "claude-opus-4-5")
 
         if not self.endpoint or not self.api_key:
-            raise ValueError("ANTHROPIC_FOUNDRY_ENDPOINT 和 ANTHROPIC_FOUNDRY_API_KEY 必須設定")
+            raise ValueError(
+                "ANTHROPIC_FOUNDRY_ENDPOINT 和 ANTHROPIC_FOUNDRY_API_KEY 必須設定"
+            )
 
         self._client = AnthropicFoundry(
             api_key=self.api_key,

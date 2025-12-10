@@ -12,7 +12,6 @@ from ..utils.config import validate_config
 from .base_client import BaseLLMClient, LLMResponse
 from .claude_client import ClaudeClient, get_claude_client
 from .gpt_client import GPTClient, get_gpt_client
-from .tools import AVAILABLE_TOOLS, get_tool_descriptions
 
 # LangGraph 多 Agent 團隊
 from .langgraph_team import (
@@ -20,6 +19,7 @@ from .langgraph_team import (
     get_agent_team,
     reset_agent_team,
 )
+from .tools import AVAILABLE_TOOLS, get_tool_descriptions
 
 __all__ = [
     # 配置

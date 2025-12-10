@@ -8,15 +8,14 @@ import json
 from typing import Any
 
 from .tools import (
-    web_search,
-    search_tw_laws,
+    fetch_pdf_content,
     fetch_tw_law_content,
     fetch_webpage,
-    fetch_pdf_content,
-    search_jp_laws,
     search_eu_laws,
+    search_jp_laws,
+    search_tw_laws,
+    web_search,
 )
-
 
 # 工具註冊表：名稱 -> 函數
 TOOL_REGISTRY: dict[str, callable] = {

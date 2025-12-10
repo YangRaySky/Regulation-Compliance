@@ -7,23 +7,23 @@ LangGraph Multi-Agent 團隊
 - Validator: 驗證結果的準確性
 """
 
-import os
 import json
+import os
 import threading
-from typing import TypedDict, Literal, Optional, Callable, Generator
-from datetime import datetime
 from concurrent.futures import ThreadPoolExecutor, as_completed
+from datetime import datetime
+from typing import Callable, Generator, Literal, Optional, TypedDict
 
 from dotenv import load_dotenv
-from langchain_core.messages import HumanMessage, AIMessage, SystemMessage, ToolMessage
+from langchain_core.messages import AIMessage, HumanMessage, SystemMessage, ToolMessage
 from langchain_openai import AzureChatOpenAI
-from langgraph.graph import StateGraph, END
+from langgraph.graph import END, StateGraph
 
-from .tool_schemas import get_tool_schemas
-from .tool_executor import execute_tool, execute_tool_call, parse_tool_results
-from .tools import fetch_webpage, fetch_pdf_content
-from ..utils.config import load_prompt
 from ..database import BaselineManager
+from ..utils.config import load_prompt
+from .tool_executor import execute_tool, execute_tool_call, parse_tool_results
+from .tool_schemas import get_tool_schemas
+from .tools import fetch_pdf_content, fetch_webpage
 
 load_dotenv()
 
@@ -335,7 +335,8 @@ def researcher_node(state: AgentState) -> AgentState:
                 tool_args = tool_call["args"]
                 total_tool_count += 1
 
-                print(f"[Researcher] 搜尋 {total_tool_count}: {tool_name}({json.dumps(tool_args, ensure_ascii=False)[:80]}...)")
+                args_str = json.dumps(tool_args, ensure_ascii=False)[:60]
+                print(f"[Researcher] 搜尋 {total_tool_count}: {tool_name}({args_str}...)")
 
                 # 執行工具
                 result = execute_tool_call(tool_call)
@@ -624,8 +625,12 @@ def validator_node(state: AgentState) -> AgentState:
             # 確保免責聲明存在
             if 'disclaimer' not in validation:
                 validation['disclaimer'] = {
-                    "zh": "本查詢結果僅供參考，不構成法律意見。法規內容可能隨時更新，請以各主管機關公告之最新版本為準。使用者應自行諮詢專業法律人員以確認適用性。",
-                    "en": "This query result is for reference only and does not constitute legal advice. Regulatory content may be updated at any time. Please refer to the latest version published by the relevant authorities. Users should consult qualified legal professionals to confirm applicability."
+                    "zh": "本查詢結果僅供參考，不構成法律意見。法規內容可能隨時更新，"
+                          "請以各主管機關公告之最新版本為準。使用者應自行諮詢專業法律人員以確認適用性。",
+                    "en": "This query result is for reference only and does not constitute legal advice. "
+                          "Regulatory content may be updated at any time. Please refer to the latest version "
+                          "published by the relevant authorities. Users should consult qualified legal "
+                          "professionals to confirm applicability."
                 }
 
             # 成功：將完整的驗證結果存入 state
@@ -673,8 +678,12 @@ def validator_node(state: AgentState) -> AgentState:
         "limitations": ["無法完成完整驗證，已返回原始搜尋結果"],
         "confidence_score": 0.3,
         "disclaimer": {
-            "zh": "本查詢結果僅供參考，不構成法律意見。法規內容可能隨時更新，請以各主管機關公告之最新版本為準。使用者應自行諮詢專業法律人員以確認適用性。",
-            "en": "This query result is for reference only and does not constitute legal advice. Regulatory content may be updated at any time. Please refer to the latest version published by the relevant authorities. Users should consult qualified legal professionals to confirm applicability."
+            "zh": "本查詢結果僅供參考，不構成法律意見。法規內容可能隨時更新，"
+                  "請以各主管機關公告之最新版本為準。使用者應自行諮詢專業法律人員以確認適用性。",
+            "en": "This query result is for reference only and does not constitute legal advice. "
+                  "Regulatory content may be updated at any time. Please refer to the latest version "
+                  "published by the relevant authorities. Users should consult qualified legal "
+                  "professionals to confirm applicability."
         }
     }
     state["status"] = "completed"

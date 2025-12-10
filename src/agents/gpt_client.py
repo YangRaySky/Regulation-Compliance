@@ -6,11 +6,11 @@ GPT-5.1 (Azure OpenAI) 客戶端
 """
 
 import os
-from typing import Optional
 from dataclasses import dataclass
+from typing import Optional
 
-from openai import AzureOpenAI
 from dotenv import load_dotenv
+from openai import AzureOpenAI
 
 from .base_client import BaseLLMClient, LLMResponse
 
@@ -52,8 +52,12 @@ class GPTClient(BaseLLMClient):
         """
         self.endpoint = endpoint or os.getenv("AZURE_OPENAI_ENDPOINT")
         self.api_key = api_key or os.getenv("AZURE_OPENAI_API_KEY")
-        self.deployment = deployment or os.getenv("AZURE_OPENAI_GPT5_DEPLOYMENT", "gpt-5.1")
-        self.api_version = api_version or os.getenv("AZURE_OPENAI_API_VERSION", "2024-12-01-preview")
+        self.deployment = deployment or os.getenv(
+            "AZURE_OPENAI_GPT5_DEPLOYMENT", "gpt-5.1"
+        )
+        self.api_version = api_version or os.getenv(
+            "AZURE_OPENAI_API_VERSION", "2024-12-01-preview"
+        )
 
         if not self.endpoint or not self.api_key:
             raise ValueError("AZURE_OPENAI_ENDPOINT 和 AZURE_OPENAI_API_KEY 必須設定")

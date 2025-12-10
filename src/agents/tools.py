@@ -7,12 +7,12 @@ Agent 工具函數
 - 網頁/PDF 內容擷取
 """
 
-import os
 import asyncio
 import json
+import os
+from datetime import datetime
 from pathlib import Path
 from typing import Annotated, Any
-from datetime import datetime
 
 import httpx
 import yaml
@@ -121,8 +121,8 @@ def _validate_url(url: str) -> tuple[bool, str]:
     Returns:
         (是否有效, 錯誤訊息)
     """
-    from urllib.parse import urlparse
     import ipaddress
+    from urllib.parse import urlparse
 
     try:
         parsed = urlparse(url)
@@ -642,8 +642,8 @@ def fetch_pdf_content(
     if not is_valid:
         return _json_response("error", {"url": url}, error=error_msg)
 
-    import tempfile
     import os
+    import tempfile
 
     try:
         # 下載 PDF 到暫存檔

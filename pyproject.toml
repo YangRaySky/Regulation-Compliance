@@ -58,12 +58,19 @@ where = ["."]
 include = ["src*", "config*"]
 
 [tool.black]
-line-length = 88
+line-length = 120
 target-version = ['py310', 'py311', 'py312']
 
 [tool.ruff]
-line-length = 88
+line-length = 120
+
+[tool.ruff.lint]
 select = ["E", "F", "I", "N", "W"]
+
+[tool.ruff.lint.per-file-ignores]
+# 這些檔案包含長描述字串，允許超過行長度限制
+"src/agents/tool_schemas.py" = ["E501"]
+"src/agents/tools.py" = ["E501"]
 
 [tool.mypy]
 python_version = "3.10"
