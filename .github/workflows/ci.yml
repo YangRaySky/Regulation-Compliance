@@ -48,11 +48,18 @@ jobs:
         run: |
           ruff check src/ tests/ --output-format=github --exit-zero
 
-      # 步驟 5: 執行測試 (Pytest)
+      # 步驟 5: 驗證套件可以導入
+      - name: Verify imports
+        run: |
+          python -c "import src; print('src OK')"
+          python -c "from src.agents import tools; print('tools OK')"
+          python -c "from src.utils import config; print('config OK')"
+
+      # 步驟 6: 執行測試 (Pytest)
       - name: Run tests
         env:
           # CI 環境的測試用環境變數
           AZURE_OPENAI_API_KEY: "test-key-for-ci"
           AZURE_OPENAI_ENDPOINT: "https://test.openai.azure.com"
         run: |
-          pytest tests/ -v --tb=short
+          pytest tests/ -v --tb=long
