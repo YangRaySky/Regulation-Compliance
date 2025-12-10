@@ -38,7 +38,8 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install -e ".[dev]"
+          pip install -r requirements.txt
+          pip install pytest pytest-asyncio pytest-cov ruff
 
       # 步驟 4: 程式碼風格檢查 (Ruff)
       # 注意：目前設定為警告模式，不會阻止 CI
