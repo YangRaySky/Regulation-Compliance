@@ -1,0 +1,50 @@
+# 資安法規合規代理人系統 - Docker Compose 配置
+version: '3.8'
+
+services:
+  # 主應用服務
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: regulation-compliance-agent
+    ports:
+      - "7860:7860"
+    env_file:
+      - .env
+    environment:
+      - GRADIO_SERVER_NAME=0.0.0.0
+      - GRADIO_SERVER_PORT=7860
+    volumes:
+      # 持久化快取和歷史記錄
+      - app_cache:/app/.cache
+      - app_data:/app/.data
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:7860/')"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+
+  # (選用) Redis 快取服務 - 用於未來分散式部署
+  # redis:
+  #   image: redis:7-alpine
+  #   container_name: regulation-cache
+  #   ports:
+  #     - "6379:6379"
+  #   volumes:
+  #     - redis_data:/data
+  #   restart: unless-stopped
+
+volumes:
+  app_cache:
+    driver: local
+  app_data:
+    driver: local
+  # redis_data:
+  #   driver: local
+
+networks:
+  default:
+    name: regulation-network

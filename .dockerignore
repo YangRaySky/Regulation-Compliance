@@ -1,0 +1,115 @@
+# ===========================================
+# Docker 忽略檔案
+# ===========================================
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# 虛擬環境
+.venv/
+venv/
+ENV/
+env/
+
+# 環境變數（重要：不要將 .env 打包進映像）
+.env
+.env.local
+.env.*.local
+
+# 快取與資料
+.cache/
+.data/
+data/
+*.db
+*.sqlite
+
+# ChromaDB
+chroma/
+
+# IDE 與編輯器
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.project
+.pydevproject
+.settings/
+
+# 測試與覆蓋率
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+.nox/
+coverage.xml
+*.cover
+*.py,cover
+
+# 日誌與輸出
+*.log
+logs/
+output/
+exports/
+
+# Jupyter Notebook
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+
+# 作業系統
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Thumbs.db
+ehthumbs.db
+
+# 暫存檔案
+*.tmp
+*.temp
+*.bak
+
+# Git
+.git/
+.gitignore
+
+# 文件（可選，視需求保留）
+docs/
+*.md
+!README.md
+
+# 測試（生產環境不需要）
+tests/
+pytest.ini
+conftest.py
+
+# 開發工具配置
+pyproject.toml
+setup.py
+setup.cfg
+.pre-commit-config.yaml
+
+# 敏感資料目錄
+google_key/
+credentials/
+secrets/

@@ -1,0 +1,323 @@
+# 地區搜尋設定檔
+# 用於 Web 搜尋時的地區特定參數
+#
+# 參數說明：
+# - sites: 搜尋限定的政府/官方網站（使用 Google site: 語法）
+# - language: 語言限制 (lr)，如 lang_zh-TW, lang_en
+# - country: 國家限制 (cr)，如 countryTW, countryUS
+# - geolocation: 地理位置 (gl)，影響搜尋結果排序，小寫兩字母
+# - interface_lang: 介面語言 (hl)，影響 snippet 語言
+# - c2coff: 停用簡繁轉換（僅用於繁體中文地區）
+#
+# 參考: https://developers.google.com/custom-search/v1/reference/rest/v1/cse/list
+
+# ===== 東亞 =====
+台灣:
+  sites: "site:law.moj.gov.tw OR site:gov.tw OR site:fsc.gov.tw"
+  language: "lang_zh-TW"
+  country: "countryTW"
+  geolocation: "tw"
+  interface_lang: "zh-TW"
+  c2coff: "1"
+
+日本:
+  sites: "site:e-gov.go.jp OR site:fsa.go.jp OR site:nisc.go.jp"
+  language: "lang_ja"
+  country: "countryJP"
+  geolocation: "jp"
+  interface_lang: "ja"
+
+韓國:
+  sites: "site:fsc.go.kr OR site:law.go.kr OR site:kisa.or.kr OR site:fss.or.kr"
+  language: "lang_ko"
+  country: "countryKR"
+  geolocation: "kr"
+  interface_lang: "ko"
+
+中國:
+  sites: "site:pbc.gov.cn OR site:cbirc.gov.cn OR site:csrc.gov.cn OR site:gov.cn"
+  language: "lang_zh-CN"
+  country: "countryCN"
+  geolocation: "cn"
+  interface_lang: "zh-CN"
+
+香港:
+  sites: "site:hkma.gov.hk OR site:sfc.hk OR site:pcpd.org.hk OR site:elegislation.gov.hk"
+  language: null
+  country: "countryHK"
+  geolocation: "hk"
+  interface_lang: "zh-TW"
+
+澳門:
+  sites: "site:gov.mo OR site:amcm.gov.mo OR site:io.gov.mo"
+  language: null
+  country: "countryMO"
+  geolocation: "mo"
+  interface_lang: "zh-TW"
+
+# ===== 東南亞 =====
+新加坡:
+  sites: "site:mas.gov.sg OR site:pdpc.gov.sg OR site:csa.gov.sg OR site:sso.agc.gov.sg"
+  language: "lang_en"
+  country: "countrySG"
+  geolocation: "sg"
+  interface_lang: "en"
+
+馬來西亞:
+  sites: "site:bnm.gov.my OR site:sc.com.my OR site:pdp.gov.my OR site:nacsa.gov.my"
+  language: "lang_en"
+  country: "countryMY"
+  geolocation: "my"
+  interface_lang: "en"
+
+泰國:
+  sites: "site:bot.or.th OR site:sec.or.th OR site:oic.or.th OR site:pdpc.or.th"
+  language: null  # lr 不支援泰文
+  country: "countryTH"
+  geolocation: "th"
+  interface_lang: "th"
+
+印尼:
+  sites: "site:ojk.go.id OR site:bi.go.id OR site:kominfo.go.id"
+  language: "lang_id"
+  country: "countryID"
+  geolocation: "id"
+  interface_lang: "id"
+
+越南:
+  sites: "site:sbv.gov.vn OR site:moj.gov.vn OR site:thuvienphapluat.vn"
+  language: null  # lr 不支援越南文
+  country: "countryVN"
+  geolocation: "vn"
+  interface_lang: "vi"
+
+菲律賓:
+  sites: "site:bsp.gov.ph OR site:sec.gov.ph OR site:privacy.gov.ph OR site:dict.gov.ph"
+  language: "lang_en"
+  country: "countryPH"
+  geolocation: "ph"
+  interface_lang: "en"
+
+# ===== 南亞 =====
+印度:
+  sites: "site:rbi.org.in OR site:sebi.gov.in OR site:irdai.gov.in OR site:meity.gov.in OR site:cert-in.org.in"
+  language: "lang_en"
+  country: "countryIN"
+  geolocation: "in"
+  interface_lang: "en"
+
+巴基斯坦:
+  sites: "site:sbp.org.pk OR site:secp.gov.pk OR site:pta.gov.pk"
+  language: "lang_en"
+  country: "countryPK"
+  geolocation: "pk"
+  interface_lang: "en"
+
+孟加拉:
+  sites: "site:bb.org.bd OR site:bsec.gov.bd"
+  language: "lang_en"
+  country: "countryBD"
+  geolocation: "bd"
+  interface_lang: "bn"
+
+# ===== 中東 =====
+阿聯酋:
+  sites: "site:centralbank.ae OR site:sca.gov.ae OR site:tdra.gov.ae"
+  language: "lang_en"
+  country: "countryAE"
+  geolocation: "ae"
+  interface_lang: "ar"
+
+沙烏地阿拉伯:
+  sites: "site:sama.gov.sa OR site:cma.org.sa OR site:nca.gov.sa"
+  language: "lang_ar"
+  country: "countrySA"
+  geolocation: "sa"
+  interface_lang: "ar"
+
+以色列:
+  sites: "site:boi.org.il OR site:isa.gov.il OR site:gov.il"
+  language: "lang_iw"
+  country: "countryIL"
+  geolocation: "il"
+  interface_lang: "iw"
+
+土耳其:
+  sites: "site:tcmb.gov.tr OR site:spk.gov.tr OR site:bddk.org.tr OR site:kvkk.gov.tr"
+  language: "lang_tr"
+  country: "countryTR"
+  geolocation: "tr"
+  interface_lang: "tr"
+
+# ===== 歐洲 =====
+歐盟:
+  sites: "site:eur-lex.europa.eu OR site:ec.europa.eu OR site:eba.europa.eu OR site:esma.europa.eu"
+  language: null
+  country: null
+  geolocation: null
+  interface_lang: "en"
+
+英國:
+  sites: "site:legislation.gov.uk OR site:fca.org.uk OR site:bankofengland.co.uk OR site:ico.org.uk"
+  language: "lang_en"
+  country: "countryUK"
+  geolocation: "uk"
+  interface_lang: "en"
+
+德國:
+  sites: "site:bafin.de OR site:bundesbank.de OR site:gesetze-im-internet.de OR site:bsi.bund.de"
+  language: "lang_de"
+  country: "countryDE"
+  geolocation: "de"
+  interface_lang: "de"
+
+法國:
+  sites: "site:amf-france.org OR site:acpr.banque-france.fr OR site:legifrance.gouv.fr OR site:cnil.fr"
+  language: "lang_fr"
+  country: "countryFR"
+  geolocation: "fr"
+  interface_lang: "fr"
+
+義大利:
+  sites: "site:bancaditalia.it OR site:consob.it OR site:normattiva.it OR site:garanteprivacy.it"
+  language: "lang_it"
+  country: "countryIT"
+  geolocation: "it"
+  interface_lang: "it"
+
+西班牙:
+  sites: "site:bde.es OR site:cnmv.es OR site:boe.es OR site:aepd.es"
+  language: "lang_es"
+  country: "countryES"
+  geolocation: "es"
+  interface_lang: "es"
+
+荷蘭:
+  sites: "site:dnb.nl OR site:afm.nl OR site:autoriteitpersoonsgegevens.nl"
+  language: "lang_nl"
+  country: "countryNL"
+  geolocation: "nl"
+  interface_lang: "nl"
+
+瑞士:
+  sites: "site:finma.ch OR site:snb.ch OR site:admin.ch"
+  language: null
+  country: "countryCH"
+  geolocation: "ch"
+  interface_lang: "de"
+
+瑞典:
+  sites: "site:fi.se OR site:riksbank.se OR site:imy.se"
+  language: "lang_sv"
+  country: "countrySE"
+  geolocation: "se"
+  interface_lang: "sv"
+
+波蘭:
+  sites: "site:knf.gov.pl OR site:nbp.pl OR site:uodo.gov.pl"
+  language: "lang_pl"
+  country: "countryPL"
+  geolocation: "pl"
+  interface_lang: "pl"
+
+俄羅斯:
+  sites: "site:cbr.ru OR site:minfin.gov.ru"
+  language: "lang_ru"
+  country: "countryRU"
+  geolocation: "ru"
+  interface_lang: "ru"
+
+# ===== 北美 =====
+美國:
+  sites: "site:govinfo.gov OR site:sec.gov OR site:ffiec.gov OR site:nist.gov OR site:occ.gov OR site:fdic.gov"
+  language: "lang_en"
+  country: "countryUS"
+  geolocation: "us"
+  interface_lang: "en"
+
+加拿大:
+  sites: "site:osfi-bsif.gc.ca OR site:bankofcanada.ca OR site:priv.gc.ca OR site:laws-lois.justice.gc.ca"
+  language: null
+  country: "countryCA"
+  geolocation: "ca"
+  interface_lang: "en"
+
+墨西哥:
+  sites: "site:banxico.org.mx OR site:cnbv.gob.mx OR site:gob.mx"
+  language: "lang_es"
+  country: "countryMX"
+  geolocation: "mx"
+  interface_lang: "es"
+
+# ===== 南美 =====
+巴西:
+  sites: "site:bcb.gov.br OR site:gov.br OR site:planalto.gov.br OR site:cvm.gov.br"
+  language: "lang_pt"
+  country: "countryBR"
+  geolocation: "br"
+  interface_lang: "pt-BR"
+
+阿根廷:
+  sites: "site:bcra.gob.ar OR site:cnv.gov.ar OR site:argentina.gob.ar"
+  language: "lang_es"
+  country: "countryAR"
+  geolocation: "ar"
+  interface_lang: "es"
+
+智利:
+  sites: "site:bcentral.cl OR site:cmfchile.cl OR site:bcn.cl"
+  language: "lang_es"
+  country: "countryCL"
+  geolocation: "cl"
+  interface_lang: "es"
+
+哥倫比亞:
+  sites: "site:banrep.gov.co OR site:superfinanciera.gov.co"
+  language: "lang_es"
+  country: "countryCO"
+  geolocation: "co"
+  interface_lang: "es"
+
+# ===== 大洋洲 =====
+澳洲:
+  sites: "site:apra.gov.au OR site:asic.gov.au OR site:rba.gov.au OR site:oaic.gov.au OR site:cyber.gov.au"
+  language: "lang_en"
+  country: "countryAU"
+  geolocation: "au"
+  interface_lang: "en"
+
+紐西蘭:
+  sites: "site:rbnz.govt.nz OR site:fma.govt.nz OR site:privacy.org.nz OR site:legislation.govt.nz"
+  language: "lang_en"
+  country: "countryNZ"
+  geolocation: "nz"
+  interface_lang: "en"
+
+# ===== 非洲 =====
+南非:
+  sites: "site:resbank.co.za OR site:fsca.co.za OR site:gov.za"
+  language: "lang_en"
+  country: "countryZA"
+  geolocation: "za"
+  interface_lang: "en"
+
+奈及利亞:
+  sites: "site:cbn.gov.ng OR site:sec.gov.ng OR site:nitda.gov.ng"
+  language: "lang_en"
+  country: "countryNG"
+  geolocation: "ng"
+  interface_lang: "en"
+
+肯亞:
+  sites: "site:centralbank.go.ke OR site:cma.or.ke"
+  language: "lang_en"
+  country: "countryKE"
+  geolocation: "ke"
+  interface_lang: "en"
+
+埃及:
+  sites: "site:cbe.org.eg OR site:fra.gov.eg"
+  language: "lang_ar"
+  country: "countryEG"
+  geolocation: "eg"
+  interface_lang: "ar"
