@@ -6,7 +6,6 @@
 
 from .manager import BaselineManager
 
-
 # ============================================================
 # 東亞地區
 # ============================================================
@@ -1163,11 +1162,11 @@ def seed_all_regulations():
 
     # 顯示統計
     stats = manager.get_statistics()
-    print(f"\n=== 統計 ===")
+    print("\n=== 統計 ===")
     print(f"法規總數: {stats['total']} 筆")
     print(f"必搜法規: {stats['mandatory']} 筆")
 
-    print(f"\n=== 按國家 ===")
+    print("\n=== 按國家 ===")
     for country, count in sorted(stats["by_country"].items(), key=lambda x: -x[1]):
         print(f"  {country}: {count} 筆")
 

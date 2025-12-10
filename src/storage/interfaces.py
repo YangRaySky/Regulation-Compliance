@@ -5,9 +5,9 @@
 """
 
 from abc import ABC, abstractmethod
-from typing import Optional, Any
+from typing import Any, Optional
 
-from ..models.regulation import Regulation, ValidationReport, TranslationResult
+from ..models.regulation import Regulation, TranslationResult, ValidationReport
 
 
 class StorageInterface(ABC):

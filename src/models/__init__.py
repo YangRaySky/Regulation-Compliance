@@ -5,17 +5,17 @@
 """
 
 from .regulation import (
-    Regulation,
     Article,
-    Requirement,
-    RegulationMetadata,
+    DataSource,
     QueryPlan,
     QueryTarget,
-    DataSource,
-    ValidationReport,
+    Regulation,
+    RegulationMetadata,
+    Requirement,
+    TranslationResult,
     ValidationCheck,
     ValidationIssue,
-    TranslationResult,
+    ValidationReport,
 )
 
 __all__ = [

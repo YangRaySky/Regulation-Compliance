@@ -10,10 +10,9 @@ PDF 解析器模組
 
 import io
 import re
-import tempfile
 from dataclasses import dataclass, field
 from pathlib import Path
-from typing import Optional, BinaryIO
+from typing import Optional
 from urllib.parse import urlparse
 
 import httpx

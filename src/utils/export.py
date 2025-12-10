@@ -10,9 +10,7 @@
 """
 
 import json
-from pathlib import Path
 from datetime import datetime
-from typing import Optional
 from io import BytesIO
 
 
@@ -56,13 +54,13 @@ class ReportExporter:
         lines = []
 
         # 標題
-        lines.append(f"# 法規查詢報告\n")
+        lines.append("# 法規查詢報告\n")
         lines.append(f"**查詢內容**: {self.original_query}\n")
         lines.append(f"**查詢時間**: {self.timestamp}\n")
 
         # 摘要
         if self.summary:
-            lines.append(f"\n## 摘要\n")
+            lines.append("\n## 摘要\n")
             lines.append(f"{self.summary}\n")
 
         # 相關法規
@@ -105,7 +103,7 @@ class ReportExporter:
 
         # 時間軸
         if self.timeline:
-            lines.append(f"\n## 法規時間軸\n")
+            lines.append("\n## 法規時間軸\n")
             lines.append("| 日期 | 事件 | 相關法規 |\n")
             lines.append("|------|------|----------|\n")
             for event in self.timeline:
@@ -116,7 +114,7 @@ class ReportExporter:
 
         # 合規檢核清單
         if self.compliance_checklist:
-            lines.append(f"\n## 合規檢核清單\n")
+            lines.append("\n## 合規檢核清單\n")
             for i, item in enumerate(self.compliance_checklist, 1):
                 item_name = item.get("item", "")
                 description = item.get("description", "")
@@ -129,7 +127,7 @@ class ReportExporter:
 
         # 信心分數
         if self.confidence_score:
-            lines.append(f"\n---\n")
+            lines.append("\n---\n")
             lines.append(f"*分析信心度: {int(self.confidence_score * 100)}%*\n")
 
         return "".join(lines)
@@ -163,11 +161,11 @@ class ReportExporter:
         """
         from reportlab.lib import colors
         from reportlab.lib.pagesizes import A4
-        from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
+        from reportlab.lib.styles import ParagraphStyle, getSampleStyleSheet
         from reportlab.lib.units import cm
-        from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Table, TableStyle
         from reportlab.pdfbase import pdfmetrics
         from reportlab.pdfbase.ttfonts import TTFont
+        from reportlab.platypus import Paragraph, SimpleDocTemplate, Spacer, Table, TableStyle
 
         # 嘗試註冊中文字體
         chinese_font = 'Helvetica'  # 預設值
@@ -327,7 +325,6 @@ class ReportExporter:
             DOCX 檔案的 bytes
         """
         from docx import Document
-        from docx.shared import Pt
         from docx.enum.text import WD_ALIGN_PARAGRAPH
 
         doc = Document()
@@ -433,7 +430,7 @@ class ReportExporter:
             XLSX 檔案的 bytes
         """
         from openpyxl import Workbook
-        from openpyxl.styles import Font, Alignment, PatternFill
+        from openpyxl.styles import Font, PatternFill
 
         wb = Workbook()
 

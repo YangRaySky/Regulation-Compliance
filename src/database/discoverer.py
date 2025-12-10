@@ -9,15 +9,14 @@
 """
 
 import json
-import time
 import re
-from datetime import datetime
-from typing import Optional, Callable, List, Dict, Any
+import time
 from dataclasses import dataclass
+from datetime import datetime
+from typing import Any, Callable, Dict, List, Optional
 
 from .manager import BaselineManager
 from .models import RegulationBaseline, get_session
-
 
 # === 監管機構網站清單 ===
 
@@ -298,8 +297,9 @@ class RegulationDiscoverer:
     def _default_llm_parse(self, content: str, prompt: str) -> str:
         """預設 LLM 解析函數"""
         try:
-            from openai import AzureOpenAI
             import os
+
+            from openai import AzureOpenAI
 
             client = AzureOpenAI(
                 api_key=os.getenv("AZURE_OPENAI_API_KEY"),
@@ -767,6 +767,6 @@ if __name__ == "__main__":
     # 測試發現功能
     print("執行法規發現測試（僅台灣）...")
     result = run_discovery(country_code="TW", verbose=True)
-    print(f"\n結果摘要:")
+    print("\n結果摘要:")
     print(f"  新增: {result['new_regulations']} 筆")
     print(f"  已存在: {result['existing_regulations']} 筆")

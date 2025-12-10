@@ -8,16 +8,17 @@
 - 查詢功能
 """
 
-from datetime import datetime, timedelta
+from datetime import datetime
 from typing import Optional
+
 from sqlalchemy import and_, or_
 from sqlalchemy.orm import Session
 
 from .models import (
     Country,
     Industry,
-    Topic,
     RegulationBaseline,
+    Topic,
     VerificationLog,
     get_session,
 )

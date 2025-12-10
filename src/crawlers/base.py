@@ -4,11 +4,11 @@
 定義爬蟲的抽象介面與共用功能。
 """
 
+import hashlib
 from abc import ABC, abstractmethod
 from dataclasses import dataclass, field
 from datetime import datetime
-from typing import Optional, Any
-import hashlib
+from typing import Optional
 
 import httpx
 

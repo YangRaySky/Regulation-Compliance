@@ -5,7 +5,7 @@ UI 事件處理器
 使用多 Agent 協作完成法規查詢任務。
 """
 
-from typing import Optional, Generator
+from typing import Generator, Optional
 
 from ..utils.config import validate_config
 

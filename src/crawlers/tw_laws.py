@@ -5,9 +5,8 @@
 """
 
 import re
-from datetime import datetime
 from typing import Optional
-from urllib.parse import urljoin, quote
+from urllib.parse import urljoin
 
 from bs4 import BeautifulSoup
 
@@ -328,7 +327,11 @@ COMMON_TW_LAWS = {
 TW_LAW_CATEGORIES = {
     "個資": ["個人資料保護法", "個人資料保護法施行細則", "個人資料保護法之特定目的及個人資料之類別"],
     "資安": ["資通安全管理法", "資通安全管理法施行細則", "資通安全責任等級分級辦法", "資通安全事件通報及應變辦法"],
-    "金融": ["金融機構辦理電子銀行業務安全控管作業基準", "保險業辦理電子商務應注意事項", "證券期貨業電子式交易型態資通安全管理基準"],
+    "金融": [
+        "金融機構辦理電子銀行業務安全控管作業基準",
+        "保險業辦理電子商務應注意事項",
+        "證券期貨業電子式交易型態資通安全管理基準",
+    ],
     "電信": ["電信管理法", "電信事業個人資料檔案安全維護計畫及處理辦法"],
     "醫療": ["醫療機構電子病歷製作及管理辦法"],
 }

@@ -5,8 +5,8 @@ Gradio UI 元件 - 簡化版聊天介面
 """
 
 import gradio as gr
-from .handlers import get_handler
 
+from .handlers import get_handler
 
 # 使用全域變數管理會話狀態（簡化版）
 _sessions = {}
@@ -352,7 +352,7 @@ def create_simple_app() -> gr.Blocks:
         def get_db_filters():
             """取得篩選器選項"""
             from ..database import BaselineManager
-            from ..database.models import get_session, Industry
+            from ..database.models import Industry, get_session
             manager = BaselineManager()
 
             # 地區選項
@@ -608,6 +608,7 @@ def create_simple_app() -> gr.Blocks:
         def load_history_item(history_id: str, chat_history):
             """載入歷史記錄項目"""
             import json
+
             from ..utils.history import get_history
 
             if not history_id or not history_id.strip():
@@ -658,6 +659,7 @@ def create_simple_app() -> gr.Blocks:
             """匯出報告"""
             import tempfile
             from pathlib import Path
+
             from ..utils.export import export_result
 
             session_id = "default"
@@ -694,6 +696,7 @@ def create_simple_app() -> gr.Blocks:
             現在支援多輪對話記憶
             """
             import json
+
             from ..utils.conversation import get_conversation
 
             # 初始化會話狀態
@@ -744,7 +747,7 @@ def create_simple_app() -> gr.Blocks:
                     original = state.get("original_query", "")
                     if original:
                         actual_query = f"{original}\n\n【用戶補充說明】\n{message}"
-                    status_lines.append(f"✅ 已收到用戶回覆")
+                    status_lines.append("✅ 已收到用戶回覆")
                     status_lines.append("🔍 正在根據您的需求執行搜尋...")
                     # ===== 串流輸出：顯示確認狀態 =====
                     yield chat_history, "\n".join(status_lines), "", get_cache_list(), get_history_list()

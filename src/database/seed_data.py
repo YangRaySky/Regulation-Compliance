@@ -7,16 +7,14 @@
 - 常見法規主題
 """
 
-from datetime import datetime
 from .models import (
     Country,
     Industry,
-    Topic,
     RegulationBaseline,
+    Topic,
     get_session,
     init_database,
 )
-
 
 # ============================================================
 # 國家/地區資料 (40 個)
@@ -523,7 +521,7 @@ def seed_all():
         print("=" * 60)
 
         # 顯示統計
-        print(f"\n統計:")
+        print("\n統計:")
         print(f"  - 國家/地區: {session.query(Country).count()} 個")
         print(f"  - 產業別: {session.query(Industry).count()} 個")
         print(f"  - 法規主題: {session.query(Topic).count()} 個")

@@ -5,13 +5,12 @@
 """
 
 import json
-import os
 from datetime import datetime
-from typing import Optional, Any
 from pathlib import Path
+from typing import Any, Optional
 
-from .interfaces import StorageInterface, VectorStoreInterface, CacheInterface
-from ..models.regulation import Regulation, ValidationReport, TranslationResult
+from ..models.regulation import Regulation, TranslationResult, ValidationReport
+from .interfaces import CacheInterface, StorageInterface, VectorStoreInterface
 
 
 class LocalSQLiteStorage(StorageInterface):
@@ -152,10 +151,7 @@ class LocalSQLiteStorage(StorageInterface):
 
     def _row_to_regulation(self, row) -> Regulation:
         """將資料庫記錄轉換為 Regulation 物件"""
-        from ..models.regulation import (
-            Regulation, Article, RegulationMetadata,
-            Jurisdiction, RegulationType
-        )
+        from ..models.regulation import Article, Jurisdiction, Regulation, RegulationMetadata, RegulationType
 
         articles_data = json.loads(row[9]) if row[9] else []
         metadata_data = json.loads(row[10]) if row[10] else {}

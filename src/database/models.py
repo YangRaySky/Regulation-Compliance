@@ -5,23 +5,23 @@
 """
 
 from datetime import datetime
-from typing import Optional
+from pathlib import Path
+
 from sqlalchemy import (
-    create_engine,
+    JSON,
+    Boolean,
     Column,
+    DateTime,
+    Float,
+    Index,
     Integer,
     String,
-    Float,
-    Boolean,
-    DateTime,
     Text,
-    JSON,
-    Index,
     UniqueConstraint,
+    create_engine,
 )
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
-from pathlib import Path
 
 Base = declarative_base()
 

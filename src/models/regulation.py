@@ -10,7 +10,6 @@ from typing import Optional
 
 from pydantic import BaseModel, Field, HttpUrl
 
-
 # ===========================================
 # 列舉類型定義
 # ===========================================

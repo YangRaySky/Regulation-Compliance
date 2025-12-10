@@ -9,8 +9,8 @@
 """
 
 import json
-from pathlib import Path
 from datetime import datetime
+from pathlib import Path
 from typing import Optional
 from uuid import uuid4
 

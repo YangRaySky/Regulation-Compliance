@@ -9,8 +9,8 @@ from .interfaces import (
     VectorStoreInterface,
 )
 from .local import (
-    LocalSQLiteStorage,
     LocalChromaVectorStore,
+    LocalSQLiteStorage,
 )
 
 __all__ = [

@@ -4,7 +4,6 @@
 測試 src/utils/cache.py 的功能。
 """
 
-import pytest
 import json
 import time
 from datetime import datetime, timedelta

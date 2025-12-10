@@ -4,8 +4,9 @@
 測試 src/utils/export.py 的功能。
 """
 
-import pytest
 import json
+
+import pytest
 
 from src.utils.export import ReportExporter, export_result
 

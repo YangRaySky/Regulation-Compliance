@@ -5,20 +5,19 @@
 使用 mock 避免實際網路請求。
 """
 
-import pytest
 import inspect
-from unittest.mock import patch, MagicMock
+from unittest.mock import patch
 
 from src.agents.tools import (
     AVAILABLE_TOOLS,
-    get_tool_descriptions,
-    web_search,
-    search_tw_laws,
+    fetch_pdf_content,
     fetch_tw_law_content,
     fetch_webpage,
-    fetch_pdf_content,
-    search_jp_laws,
+    get_tool_descriptions,
     search_eu_laws,
+    search_jp_laws,
+    search_tw_laws,
+    web_search,
 )
 
 

@@ -6,7 +6,6 @@
 
 from .manager import BaselineManager
 
-
 # ============================================================
 # 日本金融業資安法規
 # ============================================================
@@ -396,10 +395,10 @@ def seed_regulations():
 
     # 顯示統計
     stats = manager.get_statistics()
-    print(f"\n統計:")
+    print("\n統計:")
     print(f"  - 法規總數: {stats['total']} 筆")
     print(f"  - 必搜法規: {stats['mandatory']} 筆")
-    print(f"\n按國家:")
+    print("\n按國家:")
     for country, count in stats["by_country"].items():
         print(f"    {country}: {count} 筆")
 

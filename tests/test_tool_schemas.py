@@ -2,12 +2,11 @@
 工具 JSON Schema 定義測試
 """
 
-import pytest
 from src.agents.tool_schemas import (
     TOOL_SCHEMAS,
-    get_tool_schemas,
     get_tool_names,
     get_tool_schema_by_name,
+    get_tool_schemas,
 )
 
 

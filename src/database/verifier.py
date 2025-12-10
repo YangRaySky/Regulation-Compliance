@@ -11,7 +11,7 @@
 import json
 import time
 from datetime import datetime, timedelta
-from typing import Optional, Callable
+from typing import Callable, Optional
 
 from .manager import BaselineManager
 from .models import RegulationBaseline, VerificationLog, get_session
@@ -95,7 +95,7 @@ class RegulationVerifier:
                         self._report(f"  ✅ 找到 {len(results)} 筆結果")
                 else:
                     if verbose:
-                        self._report(f"  ⚠️ 搜尋成功但無結果")
+                        self._report("  ⚠️ 搜尋成功但無結果")
             else:
                 result["error"] = data.get("error", "搜尋失敗")
                 if verbose:
@@ -207,7 +207,7 @@ class RegulationVerifier:
         # 顯示摘要
         if verbose:
             self._report("=" * 60)
-            self._report(f"驗證完成！")
+            self._report("驗證完成！")
             self._report(f"  總數: {results['total']}")
             self._report(f"  找到: {results['found']} ({results['found']/max(1,results['total'])*100:.1f}%)")
             self._report(f"  未找到: {results['not_found']}")

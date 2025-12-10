@@ -7,8 +7,9 @@
 3. 適用於多個金融子產業（銀行、證券、保險等）
 """
 
-from .models import get_session, RegulationBaseline, init_database
 from sqlalchemy import text
+
+from .models import RegulationBaseline, get_session, init_database
 
 
 def update_industry_applicability():
@@ -101,7 +102,7 @@ def update_industry_applicability():
     session.commit()
     session.close()
 
-    print(f"\n=== 更新完成 ===")
+    print("\n=== 更新完成 ===")
     print(f"總更新數: {updated_count}")
     print(f"跨產業通用法規: {cross_industry_count}")
     print(f"金融業專用法規: {finance_specific_count}")

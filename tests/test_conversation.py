@@ -4,12 +4,11 @@
 測試 ConversationHistory 類別和 Session 管理功能。
 """
 
-import pytest
 from src.utils.conversation import (
     ConversationHistory,
     ConversationTurn,
-    get_conversation,
     clear_conversation,
+    get_conversation,
     reset_all_conversations,
 )
 

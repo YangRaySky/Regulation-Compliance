@@ -4,9 +4,8 @@
 新增醫療、科技、電信、電商、製造等產業的法規
 """
 
-from .models import get_session, RegulationBaseline, init_database
-from datetime import datetime
 
+from .models import RegulationBaseline, get_session, init_database
 
 # === 醫療產業法規 ===
 HEALTHCARE_REGULATIONS = [
@@ -405,7 +404,7 @@ def seed_other_industries():
     session.commit()
     session.close()
 
-    print(f"=== 其他產業法規匯入完成 ===")
+    print("=== 其他產業法規匯入完成 ===")
     print(f"新增: {added} 筆")
     print(f"跳過（已存在）: {skipped} 筆")
 
