@@ -3,12 +3,18 @@
 """
 
 import os
+import pytest
 from dotenv import load_dotenv
 
 load_dotenv()
 
 def test_langgraph_query():
     """測試 LangGraph 法規查詢"""
+    # 跳過 CI 環境（需要真實 API 金鑰）
+    api_key = os.getenv("AZURE_OPENAI_API_KEY")
+    if not api_key or api_key.startswith("test-"):
+        pytest.skip("CI 測試環境，跳過 LangGraph 整合測試")
+
     print("=" * 60)
     print("測試 LangGraph Multi-Agent 法規查詢")
     print("=" * 60)
